@@ -16,22 +16,24 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import {PanGestureHandler} from 'react-native-gesture-handler';
 
-const headerSize = 70;
+const headerSize = 108;
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: '#FFFFFF',
   },
   modal: {
     position: 'absolute',
     transform: [{translateY: Dimensions.get('window').height - headerSize}],
-    backgroundColor: 'blue',
+    backgroundColor: '#f3f3f3',
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
     paddingBottom: 25,
-    backgroundColor: 'green',
+    borderTopLeftRadius: 18,
+    borderTopRightRadius: 18,
   },
 });
 
@@ -118,16 +120,42 @@ const CustomBottomSheet = (props) => {
               current: nativeEvent.layout.height,
             });
           }}>
-          <TouchableOpacity
-            onPress={() => {
-              setModalSettings({
-                ...modalSettings,
-                position:
-                  modalSettings.position === 'initial' ? 'top' : 'initial',
-              });
+          <PanGestureHandler
+            onHandlerStateChange={(e) => {
+              console.log(e.nativeEvent.state);
+            }}
+            onGestureEvent={(e) => {
+              // console.log(e.nativeEvent.translationY);
+              if (e.nativeEvent.translationY < -10) {
+                console.log(modalSettings.position);
+                if (modalSettings.position === 'initial') {
+                  setModalSettings({
+                    ...modalSettings,
+                    position: 'top',
+                  });
+                }
+              }
+
+              if (e.nativeEvent.translationY > 10) {
+                if (modalSettings.position === 'top') {
+                  setModalSettings({
+                    ...modalSettings,
+                    position: 'initial',
+                  });
+                }
+              }
             }}>
-            <Text style={{fontSize: 20, padding: 10}}>{title}</Text>
-          </TouchableOpacity>
+            <Text
+              style={{
+                fontSize: 18,
+                paddingLeft: 40,
+                paddingTop: 35,
+                paddingBottom: 20,
+                color: '#282828',
+              }}>
+              {title}
+            </Text>
+          </PanGestureHandler>
           {children}
         </View>
       </Animatable.View>
