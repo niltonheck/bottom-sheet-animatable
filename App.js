@@ -12,15 +12,18 @@ import CustomBottomSheet from './src/components/templates/CustomBottomSheet';
 
 const App = () => {
   return (
-    <CustomBottomSheet title={'Como acessar os dados do cartão?'}>
-      <View>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec
-          dui vitae tellus lobortis egestas. Curabitur lacinia pretium odio eget
-          dignissim. Vivamus in tincidunt velit.
-        </Text>
-      </View>
-    </CustomBottomSheet>
+    <View>
+      <Text>Hei</Text>
+      <CustomBottomSheet title={'Como acessar os dados do cartão?'}>
+        <View>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec
+            dui vitae tellus lobortis egestas. Curabitur lacinia pretium odio
+            eget dignissim. Vivamus in tincidunt velit.
+          </Text>
+        </View>
+      </CustomBottomSheet>
+    </View>
   );
 };
 

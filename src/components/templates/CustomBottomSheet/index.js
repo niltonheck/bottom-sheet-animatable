@@ -24,6 +24,7 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
+    position: 'absolute',
   },
   modal: {
     position: 'absolute',
@@ -62,6 +63,24 @@ const CustomBottomSheet = (props) => {
     resize(modalHeight);
     console.log(modalHeight);
   });
+
+  const fadeIn = {
+    from: {
+      opacity: 0.0,
+    },
+    to: {
+      opacity: 0.8,
+    },
+  };
+
+  const fadeOut = {
+    from: {
+      opacity: 0.8,
+    },
+    to: {
+      opacity: 0.0,
+    },
+  };
 
   const animation = () => {
     if (modalSettings.position === 'initial') {
@@ -105,6 +124,18 @@ const CustomBottomSheet = (props) => {
 
   return (
     <View style={style.container}>
+      <Animatable.View
+        duration={200}
+        animation={modalSettings.position === 'top' ? fadeIn : fadeOut}
+        style={{
+          position: 'absolute',
+          width: Dimensions.get('window').width,
+          height: Dimensions.get('window').height,
+          backgroundColor: '#000000',
+          opacity: 0.0,
+        }}
+      />
+
       <Animatable.View
         animation={animation()}
         duration={200}
