@@ -145,18 +145,20 @@ const CustomBottomSheet = (props) => {
                 }
               }
             }}>
-            <Text
-              style={{
-                fontSize: 18,
-                paddingLeft: 40,
-                paddingTop: 35,
-                paddingBottom: 20,
-                color: '#282828',
-              }}>
-              {title}
-            </Text>
+            <View>
+              <Text
+                style={{
+                  fontSize: 18,
+                  paddingLeft: 40,
+                  paddingTop: 35,
+                  paddingBottom: 20,
+                  color: '#282828',
+                }}>
+                {title}
+              </Text>
+              {children}
+            </View>
           </PanGestureHandler>
-          {children}
         </View>
       </Animatable.View>
     </View>

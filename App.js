@@ -14,7 +14,11 @@ const App = () => {
   return (
     <CustomBottomSheet title={'Como acessar os dados do cartão?'}>
       <View>
-        <Text>Olá Mundo1</Text>
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec
+          dui vitae tellus lobortis egestas. Curabitur lacinia pretium odio eget
+          dignissim. Vivamus in tincidunt velit.
+        </Text>
       </View>
     </CustomBottomSheet>
   );
